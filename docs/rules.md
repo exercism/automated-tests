@@ -2,7 +2,7 @@
 
 ## Tests must be run in order.
 
-Presuming we're un-skipping all tests, and want to continue to promote a TDD approach, we should ensure that the tests run in order so that the "next" test is the one that fails.stop as soon as the first test fails so that a user is only presented with one error message.
+Presuming we're un-skipping all tests, and want to continue to promote a TDD approach, we should ensure that the tests run in order so that the "next" test is the one that fails. Stop as soon as the first test fails so that a user is only presented with one error message.
 
 ## The test runner must stop once a test fails.
 
