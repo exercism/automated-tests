@@ -6,7 +6,7 @@ Our test runners are deployed as docker images.
 - Your dockerfile should be the minimal needed for your test runners and create the minimal image needed for running the tests. It should use alpine linux if possible.
 - The working directory should be `/opt/test-runner`
 - There should be a `/opt/test-runner/bin/run.sh` script that can be called with 2 parameters: the `exercise slug` and the `solution folder`. For more information see [The Interface](./interface.md).
-- All changes to dockerfiles require a PR review from the @exercism/ops.
+- All changes to dockerfiles require a PR review from the @exercism/ops team.
 
 More background information and optional hints:
 - To run the containers in production the `runc` command is used which does not use the `ENTRYPOINT` specified in the `Dockerfile`. It would still be good to have an `ENTRYPOINT` specified for local use and testing.
