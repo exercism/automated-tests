@@ -37,7 +37,7 @@ The following overall statuses are valid:
 
 The following per-test statuses are valid:
 - `pass`: The test passed
-- `fail`: The test failed failed
+- `fail`: The test failed
 - `error`: The test errored
 - `skip`: The test was skipped
 
