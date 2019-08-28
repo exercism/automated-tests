@@ -20,7 +20,7 @@ The `report.json` file should be structured as followed:
   "tests": [
     {
       "name": "Test that the thing works",
-      "status": "pass",
+      "status": "fail",
       "expected": "42",
       "actual": "123123",
       "message": "Expected 42 but got 123123"
