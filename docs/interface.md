@@ -16,7 +16,7 @@ The `report.json` file should be structured as followed:
 
 ```json
 {
-  "status": "...",
+  "status": "fail",
   "tests": [
     {
       "name": "Test that the thing works",
