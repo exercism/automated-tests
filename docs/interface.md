@@ -41,7 +41,7 @@ The following per-test statuses are valid:
 - `error`: The test errored
 - `skip`: The test was skipped
 
-Where possible, `expected` should show the output that was expected and `acutal` should show what was actually given.
+Where possible, `expected` should show the output that was expected and `actual` should show what was actually given.
 
 The `message` can be used to display human-readable error messages. Presume that whatever is written here will be displayed to the student.
 
