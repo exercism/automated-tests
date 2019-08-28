@@ -31,7 +31,7 @@ The `report.json` file should be structured as followed:
 
 The following overall statuses are valid:
 - `pass`: All tests passed
-- `fail`: All tests failed
+- `fail`: At least one test failed
 - `error`: To be used when the tests did not run correctly (including if there are any skips)
 
 
