@@ -49,7 +49,7 @@ The `message` can be used to display human-readable error messages. Presume that
 
 ## Debugging
 
-The contents of `stdout` and `stderr` from each run will be persisted into files that can be viewed later.
+The contents of `stdout` and `stderr` from each run will be stored in files that can be viewed later.
 
 You may write an `report.out` file that contains debugging information you want to later view.
 
