@@ -11,5 +11,6 @@ Our test runners are deployed as docker images.
 - All changes to dockerfiles require a PR review from the @exercism/ops team.
 
 More background information and optional hints:
-- To run the containers in production the `runc` command is used which does not use the `ENTRYPOINT` specified in the `Dockerfile`. It would still be good to have an `ENTRYPOINT` specified for local use and testing.
+- To run the containers in production the `runc` command is used which does not use the `ENTRYPOINT` specified in the `Dockerfile`.
+  It would still be good to have an `ENTRYPOINT` specified for local use and testing.
 - The students solution is currently mounted to `/mnt/exercism-iteration/` in production. We still pass in the folder as a second argument to the analyzer in case that changes in the future.
