@@ -17,12 +17,11 @@ The `results.json` file should be structured as followed:
 ```json
 {
   "status": "fail",
+  "message" null,
   "tests": [
     {
       "name": "Test that the thing works",
       "status": "fail",
-      "expected": "42",
-      "actual": "123123",
       "message": "Expected 42 but got 123123"
     }
   ]
@@ -34,14 +33,13 @@ The following overall statuses are valid:
 - `fail`: At least one test failed
 - `error`: To be used when the tests did not run correctly (including if there are any skips)
 
+The top level `message` key should provide a message when tests fail to execute due to an error/exception. For example, in Ruby, we provide the error and stack trace if an exception occurs while running the tests. It should otherwise be `null`.
 
 The following per-test statuses are valid:
 - `pass`: The test passed
 - `fail`: The test failed
 - `error`: The test errored
-- `skip`: The test was skipped
 
-Where possible, `expected` should show the output that was expected and `actual` should show what was actually given.
 
 The `message` can be used to display human-readable error messages. Presume that whatever is written here will be displayed to the student.
 
