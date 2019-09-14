@@ -8,11 +8,11 @@ All interactions with the Exercism website are handled automatically. Test runne
 - The script will receive two parameters:
   - The slug of the exercise (e.g. `two-fer`).
   - A path to a directory containing the submitted file(s) (with a trailing slash).
-- The script must write a file to that directory named `report.json`
+- The script must write a file to that directory named `results.json`
 
 ## Output format
 
-The `report.json` file should be structured as followed:
+The `results.json` file should be structured as followed:
 
 ```json
 {
@@ -51,6 +51,6 @@ The `message` can be used to display human-readable error messages. Presume that
 
 The contents of `stdout` and `stderr` from each run will be stored in files that can be viewed later.
 
-You may write an `report.out` file that contains debugging information you want to later view.
+You may write an `results.out` file that contains debugging information you want to later view.
 
-At a later date, we will provide an interface for you to download these files along with the submitted files and `report.json`.
+At a later date, we will provide an interface for you to download these files along with the submitted files and `results.json`.
