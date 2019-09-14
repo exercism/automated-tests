@@ -1,6 +1,6 @@
 # The Interface
 
-All interactions with the Exercism website are handled automatically. Test runners have the single responsibility of taking a solution, running its tests and returning a standardised output.
+All interactions with the Exercism website are handled automatically. Test runners have the single responsibility of taking a solution, running all tests and returning a standardised output.
 
 ## Execution
 
