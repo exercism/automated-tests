@@ -10,7 +10,7 @@ If you would like to create an test runner for a different language, please foll
 
 ## The Interface
 
-The interface has not yet been defined.
+The interface that test runners must conform to is defined in [docs/interface.md](docs/interface.md).
 
 ## Copyright
 
