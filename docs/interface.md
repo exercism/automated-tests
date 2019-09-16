@@ -41,7 +41,7 @@ The following per-test statuses are valid:
 - `error`: The test errored
 
 
-The `message` can be used to display human-readable error messages. Presume that whatever is written here will be displayed to the student.
+The `message` key is optional and can be used to display human-readable error messages. Presume that whatever is written here will be displayed to the student.
 
 **We will provide a Ruby script that converts JUnit to this JSON output, which you can add as a final step of your Docker images, if you prefer to use an existing format.**
 
