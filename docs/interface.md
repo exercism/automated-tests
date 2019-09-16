@@ -17,7 +17,7 @@ The `results.json` file should be structured as followed:
 ```json
 {
   "status": "fail",
-  "message" null,
+  "message": null,
   "tests": [
     {
       "name": "Test that the thing works",
