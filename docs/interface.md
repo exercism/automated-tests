@@ -33,7 +33,7 @@ The following overall statuses are valid:
 - `fail`: At least one test failed
 - `error`: To be used when the tests did not run correctly
 
-The top level `message` key should provide a message when tests fail to execute due to an error/exception. For example, in Ruby, we provide the error and stack trace if an exception occurs while running the tests. If there is no error/exception, either set the value to `null` or omit the key entirely
+The top level `message` key should provide a message when tests fail to execute due to an error/exception. For example, in Ruby, we provide the error and stack trace if an exception occurs while running the tests. If there is no error/exception, either set the value to `null` or omit the key entirely.
 
 The following per-test statuses are valid:
 - `pass`: The test passed
