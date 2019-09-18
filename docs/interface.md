@@ -33,7 +33,7 @@ The following overall statuses are valid:
 - `fail`: At least one test failed
 - `error`: To be used when the tests did not run correctly
 
-The top level `message` key should provide a message when tests fail to execute due to an error/exception. For example, in Ruby, we provide the error and stack trace if an exception occurs while running the tests. It should otherwise be `null`.
+The top level `message` key should provide a message when tests fail to execute due to an error/exception. For example, in Ruby, we provide the error and stack trace if an exception occurs while running the tests. If there is no error/exception, either set the value to `null` or omit the key entirely.
 
 The following per-test statuses are valid:
 - `pass`: The test passed
@@ -41,7 +41,7 @@ The following per-test statuses are valid:
 - `error`: The test errored
 
 
-The `message` key is optional and can be used to display human-readable error messages. Presume that whatever is written here will be displayed to the student.
+The per-test `message` key can be used to display human-readable error messages. Presume that whatever is written here will be displayed to the student. If there is no error message, either set the value to `null` or omit the key entirely.
 
 **We will provide a Ruby script that converts JUnit to this JSON output, which you can add as a final step of your Docker images, if you prefer to use an existing format.**
 
