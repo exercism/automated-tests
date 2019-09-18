@@ -34,7 +34,6 @@ The following overall statuses are valid:
 - `fail`: All tests failed
 - `error`: To be used when the tests did not run correctly (including if there are any skips)
 
-
 The following per-test statuses are valid:
 - `pass`: The test passed
 - `fail`: The test failed failed
@@ -44,6 +43,8 @@ The following per-test statuses are valid:
 Where possible, `expected` should show the output that was expected and `acutal` should show what was actually given.
 
 `message` can be used to display human-readable error messages. Presume that whatever is written here will be displayed to the student.
+
+The `tests` array must be returned in the same order in which they appear in the test-suite. For some test-runners this may be trivial, for others (e.g. those that randomise or parallelise tests) post-processing will be required to order the results in ascending order by line number.
 
 ## Debugging
 
