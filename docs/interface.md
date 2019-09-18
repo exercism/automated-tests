@@ -44,7 +44,7 @@ Where possible, `expected` should show the output that was expected and `acutal`
 
 `message` can be used to display human-readable error messages. Presume that whatever is written here will be displayed to the student.
 
-The `tests` array must be returned in the same order in which they appear in the test-suite. For some test-runners this may be trivial, for others (e.g. those that randomise or parallelise tests) then post-processing will be required to line reorder the results.
+The `tests` array must be returned in the same order in which they appear in the test-suite. For some test-runners this may be trivial, for others (e.g. those that randomise or parallelise tests) post-processing will be required to order the results in ascending order by line number.
 
 ## Debugging
 
