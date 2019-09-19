@@ -49,6 +49,6 @@ The per-test `message` key can be used to display human-readable error messages.
 
 The contents of `stdout` and `stderr` from each run will be stored in files that can be viewed later.
 
-You may write an `results.out` file to the output directory, which that contains debugging information you want to later view.
+You may write an `results.out` file to the output directory, which contains debugging information you want to later view.
 
 At a later date, we will provide an interface for you to download these files along with the submitted files and `results.json`.
