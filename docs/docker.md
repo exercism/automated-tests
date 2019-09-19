@@ -6,7 +6,7 @@ Our test runners are deployed as docker images.
 - Your dockerfile should be the minimal needed for your test runners and create the minimal image needed for running the tests.
   It should use alpine linux if possible.
 - The working directory should be `/opt/test-runner`
-- There should be a `/opt/test-runner/bin/run.sh` script that can be called with 2 parameters: the `exercise slug` and the `solution folder`.
+- There should be a `/opt/test-runner/bin/run.sh` script that can be called with 3 parameters: the `exercise slug`, the path to the `solution folder`, and the path to the `output folder`.
   For more information see [The Interface](./interface.md).
 - All changes to dockerfiles require a PR review from the @exercism/ops team.
 
