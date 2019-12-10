@@ -23,11 +23,14 @@ The `results.json` file should be structured as followed:
     {
       "name": "Test that the thing works",
       "status": "fail",
-      "message": "Expected 42 but got 123123"
+      "message": "Expected 42 but got 123123",
+      "output": "Debugging information output by the user"
     }
   ]
 }
 ```
+
+### Top level
 
 The following overall statuses are valid:
 - `pass`: All tests passed
@@ -36,12 +39,26 @@ The following overall statuses are valid:
 
 The top level `message` key should provide a message when tests fail to execute due to an error/exception. For example, in Ruby, we provide the error and stack trace if an exception occurs while running the tests. If there is no error/exception, either set the value to `null` or omit the key entirely.
 
+### Per-test
+
+#### Statuses
+
 The following per-test statuses are valid:
 - `pass`: The test passed
 - `fail`: The test failed
 - `error`: The test errored
 
+#### Messages
+
 The per-test `message` key can be used to display human-readable error messages. Presume that whatever is written here will be displayed to the student. If there is no error message, either set the value to `null` or omit the key entirely.
+
+#### Output
+
+The per-test `output` key should be used to store and output anything that a user deliberately outputs for a test.
+
+- It may attached to all tests results, or just those that fail, which are currently the only ones we show to a user.
+- Only content outputted by a user manually should show - not automatic output by the test-runner.
+- You may either capture content that is output through normal means (e.g. `puts` in Ruby, `print` in Python or `WriteLine` in C#), or you may provide a method that the user may use (e.g. the Ruby Test Runner provides a user with a globally avaliable `debug` method that they can use, which has the same charateristics as the standard `puts` method).
 
 **We will provide a Ruby script that converts JUnit to this JSON output, which you can add as a final step of your Docker images, if you prefer to use an existing format.**
 
