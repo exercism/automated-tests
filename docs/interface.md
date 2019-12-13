@@ -10,6 +10,7 @@ All interactions with the Exercism website are handled automatically. Test runne
   - A path to an input directory containing the submitted solution file(s) and the necessary test file(s) (with a trailing slash).
   - A path to an output directory (with a trailing slash).
 - The script must write a file to the output directory named `results.json`
+- The runner must exit with an exit code of 0 if it has run successfully, regardless of the status of the tests.
 
 ## Output format
 
