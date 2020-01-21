@@ -7,7 +7,7 @@ All interactions with the Exercism website are handled automatically. Test runne
 - A test runner should provide an executable script. You can find more information in the [docker.md](./docker.md) file.
 - The script will receive three parameters:
   - The slug of the exercise (e.g. `two-fer`).
-  - A path to an input directory containing the submitted solution file(s) merged with the exercise file(s) from the repository (with a trailing slash). This directory should be considered as read-only. As [@ccare specified](https://github.com/exercism/automated-tests/issues/38#issuecomment-576335584) it's technically possible to write into it but it's better to use `/tmp` for temporary files (e.g. for compiling sources).
+  - A path to an input directory (with a trailing slash) containing the submitted solution file(s) and any other exercise file(s). This directory should be considered as read-only. As [@ccare specified](https://github.com/exercism/automated-tests/issues/38#issuecomment-576335584) it's technically possible to write into it but it's better to use `/tmp` for temporary files (e.g. for compiling sources).
   - A path to an output directory (with a trailing slash). This directory is writable.
 - The script must write a file to the output directory named `results.json`
 - The runner must exit with an exit code of 0 if it has run successfully, regardless of the status of the tests.
