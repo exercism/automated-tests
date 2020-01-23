@@ -57,7 +57,7 @@ The per-test `message` key can be used to display human-readable error messages.
 
 The per-test `output` key should be used to store and output anything that a user deliberately outputs for a test.
 
-- It should be attached to all tests results that produce user output.
+- It should be attached to all test results that produce user output.
 - Only content outputted by a user manually should show - not automatic output by the test-runner.
 - You may either capture content that is output through normal means (e.g. `puts` in Ruby, `print` in Python or `Debug.WriteLine` in C#), or you may provide a method that the user may use (e.g. the Ruby Test Runner provides a user with a globally available `debug` method that they can use, which has the same characteristics as the standard `puts` method).
 - The output **must** be limited to 500 chars. Either truncating with a message of "Output was truncated. Please limit to 500 chars" or returning an error in this situation are acceptible.
