@@ -36,9 +36,13 @@ The `results.json` file should be structured as followed:
 The following overall statuses are valid:
 - `pass`: All tests passed
 - `fail`: At least one test failed
-- `error`: To be used when the tests did not run correctly
+- `error`: To be used when the tests did not run correctly (e.g. a compile error, a syntax error)
 
-The top level `message` key should provide a message when tests fail to execute due to an error/exception. For example, in Ruby, we provide the error and stack trace if an exception occurs while running the tests. If there is no error/exception, either set the value to `null` or omit the key entirely.
+#### Message
+
+Where the status is `error` (the tests fail to execute cleanly), the top level `message` key should be provided. It should provide the occurring error to the user. As it is the only piece of information a user will receive on how to debug their issue, it must be as clear as possible.. For example, in Ruby, in the case of a syntax error, we provide the error and stack trace. In compiled languages, the compilation error should be provided.
+
+When the status is not `error`, either set the value to `null` or omit the key entirely.
 
 ### Per-test
 
