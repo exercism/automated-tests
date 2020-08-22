@@ -9,6 +9,7 @@ Our test runners are deployed as docker images.
 - There should be a `/opt/test-runner/bin/run.sh` script that can be called with 3 parameters: the `exercise slug`, the path to the `solution folder`, and the path to the `output folder`.
   For more information see [The Interface](./interface.md).
 - All changes to dockerfiles require a PR review from the @exercism/ops team.
+- The docker image should include the [local-tooling-webserver](https://github.com/exercism/local-tooling-webserver/blob/master/README.md#installation-docker).
 
 More background information and optional hints:
 - To run the containers in production the `runc` command is used which does not use the `ENTRYPOINT` specified in the `Dockerfile`.
