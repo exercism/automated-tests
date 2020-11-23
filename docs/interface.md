@@ -94,9 +94,9 @@ This is the value that is expected from the command (see `"cmd"` key) being test
 
 ## Why have separate command and expected keys
 
-The purpose of exercism is to teach programming language fluency.  Testing is a specific concept all to itself in each language: how it is performed, what strategies to use, best-practices, etc. Requiring students to learn the test framework to understand very early exercises is counter-intuitive to the approach of language _fluency_.
+The purpose of Exercism is to teach programming language fluency. Testing is a specific concept all to itself in each language: how it is performed, what strategies to use, best-practices, etc. Requiring students to learn the test framework to understand very early exercises is counter-intuitive to the approach of language _fluency_.
 
-All this to say, the separate keys exist to facilitate a very plain, human approach to the test suite for each language.  It facilitates the website UI/UX, which may or may not show the test suite to the student.
+All this to say, the separate keys exist to facilitate a very plain, human approach to the test suite for each language. It facilitates the website UI/UX, which may or may not show the test suite to the student.
 
 ### How to add metadata for your language's test suite
 
