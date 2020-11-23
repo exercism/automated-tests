@@ -98,6 +98,31 @@ The purpose of Exercism is to teach programming language fluency. Testing is a s
 
 All this to say, the separate keys exist to facilitate a very plain, human approach to the test suite for each language. It facilitates the website UI/UX, which may or may not show the test suite to the student.
 
+### UI/UX concerns
+
+#### On test failure
+
+When a student's solution fails a test, it should display something like:
+
+```text
+We ran:
+  <cmd>
+
+It resulted in:
+  <message>
+```
+
+#### On test success
+
+When the solution passes a test, it should display something like:
+
+```text
+We ran:
+  <cmd>
+Succeeded with:
+  <expected>
+```
+
 ### How to add metadata for your language's test suite
 
 All roads lead to rome and there is no prescribed pattern to arrive at this, there are several approaches taken so far:
