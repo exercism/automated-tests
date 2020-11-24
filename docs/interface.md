@@ -54,7 +54,7 @@ When the status is not `error`, either set the value to `null` or omit the key e
 
 ### Per-test
 
-#### Statuses
+#### Status
 
 > key: `status`
 
@@ -63,7 +63,7 @@ The following per-test statuses are valid:
 - `fail`: The test failed
 - `error`: The test errored
 
-#### Messages
+#### Message
 
 > key: `message`
 
@@ -125,7 +125,7 @@ Succeeded with:
 
 ### How to add metadata for your language's test suite
 
-All roads lead to rome and there is no prescribed pattern to arrive at this, there are several approaches taken so far:
+All roads lead to Rome and there is no prescribed pattern to arrive at this. There are several approaches taken so far:
 
 - Auxillary JSON files compiled manually, merged with test results during the test run-time.
 - Automated static analysis of the test suite, merged with test results during the test run-time.
