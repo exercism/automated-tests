@@ -25,13 +25,19 @@ The `results.json` file should be structured as followed:
       "name": "Test that the thing works",
       "status": "fail",
       "message": "Expected 42 but got 123123",
-      "output": "Debugging information output by the user"
+      "output": "Debugging information output by the user",
+      "cmd": "answerToTheUltimateQuestion()",
+      "expected": "42"
     }
   ]
 }
 ```
 
 ### Top level
+
+#### Status
+
+> key: `status`
 
 The following overall statuses are valid:
 - `pass`: All tests passed
@@ -40,24 +46,32 @@ The following overall statuses are valid:
 
 #### Message
 
+> key: `message`
+
 Where the status is `error` (the tests fail to execute cleanly), the top level `message` key should be provided. It should provide the occurring error to the user. As it is the only piece of information a user will receive on how to debug their issue, it must be as clear as possible.. For example, in Ruby, in the case of a syntax error, we provide the error and stack trace. In compiled languages, the compilation error should be provided.
 
 When the status is not `error`, either set the value to `null` or omit the key entirely.
 
 ### Per-test
 
-#### Statuses
+#### Status
+
+> key: `status`
 
 The following per-test statuses are valid:
 - `pass`: The test passed
 - `fail`: The test failed
 - `error`: The test errored
 
-#### Messages
+#### Message
 
-The per-test `message` key can be used to display human-readable error messages. Presume that whatever is written here will be displayed to the student. If there is no error message, either set the value to `null` or omit the key entirely.
+> key: `message`
+
+The per-test `message` key can be used to display human-readable error messages. Presume that whatever is written here will be displayed to the student. If there is no error message, either set the value to `null` or omit the key entirely. It is also permissible to output test suite output here.
 
 #### Output
+
+> key: `output`
 
 The per-test `output` key should be used to store and output anything that a user deliberately outputs for a test.
 
@@ -65,6 +79,57 @@ The per-test `output` key should be used to store and output anything that a use
 - Only content outputted by a user manually should show - not automatic output by the test-runner.
 - You may either capture content that is output through normal means (e.g. `puts` in Ruby, `print` in Python or `Debug.WriteLine` in C#), or you may provide a method that the user may use (e.g. the Ruby Test Runner provides a user with a globally available `debug` method that they can use, which has the same characteristics as the standard `puts` method).
 - The output **must** be limited to 500 chars. Either truncating with a message of "Output was truncated. Please limit to 500 chars" or returning an error in this situation are acceptible.
+
+#### Command
+
+> key: `cmd`
+
+This is the command that is being tested, apart from any test-suite-specific function and/or special syntax. The purpose of this is to clearly state what code is evaluated and subsequently failing the test.
+
+#### Expected
+
+> key: `expected`
+
+This is the value that is expected from the command (see `"cmd"` key) being tested, apart from any test-specific functions and/or special syntax. The purpose of this is to clearly state what value is expected when the command is evaluated.
+
+## Why have separate command and expected keys
+
+The purpose of Exercism is to teach programming language fluency. Testing is a specific concept all to itself in each language: how it is performed, what strategies to use, best-practices, etc. Requiring students to learn the test framework to understand very early exercises is counter-intuitive to the approach of language _fluency_.
+
+All this to say, the separate keys exist to facilitate a very plain, human approach to the test suite for each language. It facilitates the website UI/UX, which may or may not show the test suite to the student.
+
+### UI/UX concerns
+
+#### On test failure
+
+When a student's solution fails a test, it should display something like:
+
+```text
+We ran:
+  <cmd>
+
+It resulted in:
+  <message>
+```
+
+#### On test success
+
+When the solution passes a test, it should display something like:
+
+```text
+We ran:
+  <cmd>
+Succeeded with:
+  <expected>
+```
+
+### How to add metadata for your language's test suite
+
+All roads lead to Rome and there is no prescribed pattern to arrive at this. There are several approaches taken so far:
+
+- Auxillary JSON files compiled manually, merged with test results during the test run-time.
+- Automated static analysis of the test suite, merged with test results during the test run-time.
+  - This may be accomplished by AST analysis or text-parsing
 
 ## Debugging
 
