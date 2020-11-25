@@ -7,7 +7,7 @@ All interactions with the Exercism website are handled automatically. Test runne
 - A test runner should provide an executable script. You can find more information in the [docker.md](./docker.md) file.
 - The script will receive three parameters:
   - The slug of the exercise (e.g. `two-fer`).
-  - A path to an input directory (with a trailing slash) containing the submitted solution file(s) and any other exercise file(s). This directory should be considered as read-only. As [@ccare specified](https://github.com/exercism/automated-tests/issues/38#issuecomment-576335584) it's technically possible to write into it but it's better to use `/tmp` for temporary files (e.g. for compiling sources).
+  - A path to an input directory (with a trailing slash) containing the submitted solution file(s) and any other exercise file(s). This directory should be considered as read-only. It's technically possible to write into it but it's better to use `/tmp` for temporary files (e.g. for compiling sources).
   - A path to an output directory (with a trailing slash). This directory is writable.
 - The script must write a `results.json` file to the output directory.
 - The runner must exit with an exit code of 0 if it has run successfully, regardless of the status of the tests.
@@ -26,8 +26,7 @@ The `results.json` file should be structured as followed:
       "status": "fail",
       "message": "Expected 42 but got 123123",
       "output": "Debugging information output by the user",
-      "cmd": "answerToTheUltimateQuestion()",
-      "expected": "42"
+      "cmd": "assert_equal 42, answerToTheUltimateQuestion()",
     }
   ]
 }
@@ -54,6 +53,39 @@ When the status is not `error`, either set the value to `null` or omit the key e
 
 ### Per-test
 
+#### Name
+
+> key: `name`
+
+This is the name of the test in a human-readable format.
+
+#### Command
+
+> key: `cmd`
+
+This is the body of the command that is being tests. It should have any `skip` annotations removed. For example, the following Ruby test:
+```ruby
+  def test_duplicate_items_uniqs_list
+    skip
+    cart = ShoppingCart.new
+    cart.add(:STARIC)
+    cart.add(:MEDNEW)
+    cart.add(:MEDNEW)
+    assert_equal 'Newspaper, Rice', cart.items_list
+  end
+```
+
+... should return a cmd value of:
+```ruby
+"cart = ShoppingCart.new
+cart.add(:STARIC)
+cart.add(:MEDNEW)
+cart.add(:MEDNEW)
+assert_equal 'Newspaper, Rice', cart.items_list"
+```
+
+(with linebreaks replaced by `\n` to make the JSON valid).
+
 #### Status
 
 > key: `status`
@@ -67,7 +99,7 @@ The following per-test statuses are valid:
 
 > key: `message`
 
-The per-test `message` key can be used to display human-readable error messages. Presume that whatever is written here will be displayed to the student. If there is no error message, either set the value to `null` or omit the key entirely. It is also permissible to output test suite output here.
+The per-test `message` key is used to return the results of a failed test. It should be as human-readable as possible. Whatever is written here will be displayed to the student when their test fails. If there is no error message, either set the value to `null` or omit the key entirely. It is also permissible to output test suite output here.
 
 #### Output
 
@@ -80,24 +112,6 @@ The per-test `output` key should be used to store and output anything that a use
 - You may either capture content that is output through normal means (e.g. `puts` in Ruby, `print` in Python or `Debug.WriteLine` in C#), or you may provide a method that the user may use (e.g. the Ruby Test Runner provides a user with a globally available `debug` method that they can use, which has the same characteristics as the standard `puts` method).
 - The output **must** be limited to 500 chars. Either truncating with a message of "Output was truncated. Please limit to 500 chars" or returning an error in this situation are acceptible.
 
-#### Command
-
-> key: `cmd`
-
-This is the command that is being tested, apart from any test-suite-specific function and/or special syntax. The purpose of this is to clearly state what code is evaluated and subsequently failing the test.
-
-#### Expected
-
-> key: `expected`
-
-This is the value that is expected from the command (see `"cmd"` key) being tested, apart from any test-specific functions and/or special syntax. The purpose of this is to clearly state what value is expected when the command is evaluated.
-
-## Why have separate command and expected keys
-
-The purpose of Exercism is to teach programming language fluency. Testing is a specific concept all to itself in each language: how it is performed, what strategies to use, best-practices, etc. Requiring students to learn the test framework to understand very early exercises is counter-intuitive to the approach of language _fluency_.
-
-All this to say, the separate keys exist to facilitate a very plain, human approach to the test suite for each language. It facilitates the website UI/UX, which may or may not show the test suite to the student.
-
 ### UI/UX concerns
 
 #### On test failure
@@ -105,10 +119,10 @@ All this to say, the separate keys exist to facilitate a very plain, human appro
 When a student's solution fails a test, it should display something like:
 
 ```text
-We ran:
+Test Code:
   <cmd>
 
-It resulted in:
+Test Result:
   <message>
 ```
 
@@ -117,10 +131,8 @@ It resulted in:
 When the solution passes a test, it should display something like:
 
 ```text
-We ran:
+Test Code:
   <cmd>
-Succeeded with:
-  <expected>
 ```
 
 ### How to add metadata for your language's test suite
