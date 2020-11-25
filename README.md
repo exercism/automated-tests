@@ -1,17 +1,3 @@
 # Automated Tests on Exercism
 
-This repository is the overview space of the automated running of tests on Exercism
-
-## Tests runners
-
-If you would like to get involved in [an existing test runner, please open an issue in its repository](https://github.com/exercism?q=test-runner) asking if there is somewhere you can help.
-
-If you would like to create an test runner for a different language, please follow the open an issue using the relevant template.
-
-## The Interface
-
-The interface that test runners must conform to is defined in [docs/interface.md](docs/interface.md).
-
-## Copyright
-
-All content in this repository is copyright to Exercism and licenced under MIT.
+This repository is now deprecated. Please see [our new docs](https://github.com/exercism/v3-docs) instead.
